@@ -25,7 +25,9 @@ public class MainActivity extends BaseActivity  {
 
         mTextView = (TextView) findViewById(R.id.textview);
 
-        CodecoolAPI.Factory.getInstance().getAcceptanceSurvey().enqueue(new Callback<Questions>() {
+        CodecoolAPI.Factory.getInstance()                    // Lekeri a APIkezelot
+                .getSurvey("acceptance")                    // Az interfaceben defeinialt fuggveny ami a parameterben kapott cimre kuld GET-et
+                .enqueue(new Callback<Questions>() {        // kirakja hatso szalra a lekerest, responce kezeles ezalatt
             @Override
             public void onResponse(Call<Questions> call, Response<Questions> response) {
                 ArrayList<Question> questionList = (ArrayList<Question>) response.body().getQuestions();
