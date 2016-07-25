@@ -1,15 +1,49 @@
 package com.andraskesik.codecoolapp.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.andraskesik.codecoolapp.R;
+import com.andraskesik.codecoolapp.model.Question;
+import com.andraskesik.codecoolapp.model.Questions;
+import com.andraskesik.codecoolapp.util.CodecoolAPI;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class MainActivity extends BaseActivity  {
+
+    private TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mTextView = (TextView) findViewById(R.id.textview);
+
+        CodecoolAPI.Factory.getInstance().getAcceptanceSurvey().enqueue(new Callback<Questions>() {
+            @Override
+            public void onResponse(Call<Questions> call, Response<Questions> response) {
+                ArrayList<Question> questionList = (ArrayList<Question>) response.body().getQuestions();
+                for (Question q: questionList) {
+                    mTextView.append(q.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Questions> call, Throwable t) {
+
+            }
+        });
+
+
+
     }
+
+
+
 }
