@@ -1,7 +1,9 @@
-package com.andraskesik.codecoolapp;
+package com.andraskesik.codecoolapp.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.andraskesik.codecoolapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
