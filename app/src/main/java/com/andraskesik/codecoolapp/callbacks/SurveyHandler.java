@@ -2,14 +2,12 @@ package com.andraskesik.codecoolapp.callbacks;
 
 import android.content.Context;
 
-import com.andraskesik.codecoolapp.model.Question;
-
 import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class SurveyHandler<Question> extends Handlers {
+public class SurveyHandler<Question> extends Handler {
 
     public SurveyHandler(Context context) {
         super(context);

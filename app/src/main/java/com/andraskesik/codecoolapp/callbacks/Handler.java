@@ -6,11 +6,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Handlers implements Callback{
+public class Handler implements Callback{
 
     Context mContext;
 
-    public Handlers(Context context) {
+    public Handler(Context context) {
         mContext = context;
     }
 
